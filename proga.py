@@ -11,7 +11,7 @@ if __name__=='__main__':
     arguments = numpy.r_[0:200:0.1]  #аргумент от 0 до 200 с шагом в 0,1
     mpp.plot(   #рисуется график
         arguments,
-        [math.sin(a)*math.sin(a/20) for a in arguments] #функция, график которой рисуется(я тут тыкался)
+        [math.cos(a*2)*math.cos(a/25) for a in arguments] #функция, график которой рисуется(я тут тыкался)
     )
     mpp.show() #выводит график
 
