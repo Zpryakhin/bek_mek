@@ -1,32 +1,21 @@
-#!/usr/bin/env python3
-
-"""
-Реализация алгоритма Рабина-Карпа с модульными тестами
-"""
-
 import unittest
 
-def rabin_karp(text, pattern):
-   
+def rabin_karp(text, pattern):    
+    result = []
+    if text == "":
+        return result
+    if pattern == "":
+        return [i for i in range(len(text))]
+    patternsum = sum(ord(s) for s in pattern)
+    textwindowsum = sum(ord(text[j]) for j in range(len(pattern)))
+    for i in range(len(text) - len(pattern) + 1):     
+        if patternsum == textwindowsum:
+            if text.startswith(pattern, i):
+                    result.append(i)
+        if i < (len(text) - len(pattern)):            
+            textwindowsum = textwindowsum - ord(text[i])+ord(text[i+len(pattern)])      
+    return result        
     
-        result = []
-        if text == "":
-            return result
-        if pattern == "":
-            return [i for i in range(len(text))]
-        patternsum = 0
-        patternsum = sum(ord(s) for s in pattern)
-        textwindowsum = sum(ord(text[j]) for j in range(len(pattern)))
-        for i in range(len(text) - len(pattern) + 1):     
-            if patternsum == textwindowsum:
-                if text.startswith(pattern, i):
-                        result.append(i)
-            if i < (len(text) - len(pattern)):            
-                textwindowsum = textwindowsum - ord(text[i])+ord(text[i+len(pattern)])      
-        return result        
-    
-
-
 class RabinKarpTest(unittest.TestCase):
     """Тесты для метода Рабина-Карпа"""
 
