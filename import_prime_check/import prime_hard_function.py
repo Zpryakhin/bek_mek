@@ -1,4 +1,4 @@
-import prime_hard_function
+from prime_hard_function import phf
 
 a =int(input("Введите число: "))
-print(prime_hard_function.Is_Prime(a))
+print(phf.Is_Prime(a))
